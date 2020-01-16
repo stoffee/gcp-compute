@@ -35,7 +35,7 @@ resource "google_compute_instance" "default" {
   sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
   sudo apt update
   apt-cache policy docker-ce
-  sudo apt install -y docker-ce docker-compose
+  sudo apt install -y docker-ce docker-compose mosquitto mosquitto-clients
   sudo systemctl status docker
   sudo chmod +w /usr/local/src
   cd /usr/local/src && git clone https://github.com/buildlyio/buildly-core.git
