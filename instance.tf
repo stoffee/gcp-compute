@@ -41,13 +41,9 @@ resource "google_compute_instance" "default" {
   cd /usr/local/src && git clone https://github.com/buildlyio/buildly-core.git
   cd /usr/local/src/buildly-core
   sudo docker-compose build
-  sudo docker-compose -d up
+  sudo docker-compose up -d
   cd ../
   openssl genrsa -out private.pem 2048
   openssl rsa -in private.pem -outform PEM -pubout -out public.pem
   SCRIPT
-
-  service_account {
-    scopes = ["userinfo-email", "compute-ro", "storage-ro"]
-  }
 }
