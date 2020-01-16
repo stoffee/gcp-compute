@@ -24,9 +24,9 @@ resource "google_compute_instance" "default" {
     }
   }
 
-  #metadata = {
-  #  Mission = "Seti"
-  #}
+  metadata = {
+    Mission = "buildly"
+  }
 
   metadata_startup_script = <<SCRIPT
   sudo apt update
