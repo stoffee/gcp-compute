@@ -35,13 +35,13 @@ resource "google_compute_instance" "default" {
   sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
   sudo apt update
   apt-cache policy docker-ce
-  sudo apt install -y docker-ce 
+  sudo apt install -y docker-ce docker-compose
   sudo systemctl status docker
   sudo chmod +w /usr/local/src
   cd /usr/local/src && git clone https://github.com/buildlyio/buildly-core.git
   cd /usr/local/src/buildly-core
-  docker-compose build
-  docker-compose -d up
+  sudo docker-compose build
+  sudo docker-compose -d up
   cd ../
   openssl genrsa -out private.pem 2048
   openssl rsa -in private.pem -outform PEM -pubout -out public.pem
