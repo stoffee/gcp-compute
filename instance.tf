@@ -37,11 +37,13 @@ resource "google_compute_instance" "default" {
   apt-cache policy docker-ce
   sudo apt install -y docker-ce docker-compose mosquitto mosquitto-clients
   sudo systemctl status docker
-  sudo chmod +w /usr/local/src
-  cd /usr/local/src && git clone https://github.com/buildlyio/buildly-core.git
-  cd /usr/local/src/buildly-core
-  sudo docker-compose build
-  sudo docker-compose up -d
+  sudo chmod a+w /usr/local/src
+  cd /usr/local/src
+  git clone https://github.com/buildlyio/buildly-core.git
+  git clone https://github.com/Buildly-Marketplace/iot_service.git
+  git clone https://github.com/buildlyio/buildly-cli.git
+  cd /usr/local/src/buildly-core && sudo docker-compose build && sudo docker-compose up -d &
+  cd /usr/local/src/iot_service && sudo docker-compose build && sudo docker-compose up -d &
   cd ../
   openssl genrsa -out private.pem 2048
   openssl rsa -in private.pem -outform PEM -pubout -out public.pem
