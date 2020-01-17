@@ -42,9 +42,9 @@ resource "google_compute_instance" "default" {
   sudo systemctl status docker
   sudo chmod a+w /usr/local/src
   cd /usr/local/src
-  git clone https://github.com/buildlyio/buildly-core.git
-  git clone https://github.com/Buildly-Marketplace/iot_service.git
-  git clone https://github.com/buildlyio/buildly-cli.git
+  git clone --recurse-submodules https://github.com/buildlyio/buildly-core.git
+  git clone --recurse-submodules https://github.com/Buildly-Marketplace/iot_service.git
+  git clone --recurse-submodules https://github.com/buildlyio/buildly-cli.git
   cd /usr/local/src/buildly-core && sudo docker-compose build && sudo docker-compose up -d &
   cd /usr/local/src/iot_service && sudo docker-compose build && sudo docker-compose up -d &
   cd ../
