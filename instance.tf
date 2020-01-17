@@ -33,9 +33,12 @@ resource "google_compute_instance" "default" {
   sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+  curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+  sudo touch /etc/apt/sources.list.d/kubernetes.list
+  echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
   sudo apt update
   apt-cache policy docker-ce
-  sudo apt install -y docker-ce docker-compose mosquitto mosquitto-clients
+  sudo apt install -y docker-ce docker-compose mosquitto mosquitto-clients kubectl
   sudo systemctl status docker
   sudo chmod a+w /usr/local/src
   cd /usr/local/src
