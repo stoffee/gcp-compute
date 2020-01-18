@@ -40,6 +40,7 @@ resource "google_compute_instance" "default" {
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
   sudo apt update
   apt-cache policy docker-ce
+  curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
   sudo apt install -y docker-ce docker-compose mosquitto mosquitto-clients kubectl nodejs npm yarn
   npm install -g gulp
   sudo systemctl status docker
@@ -55,7 +56,7 @@ resource "google_compute_instance" "default" {
   sudo yarn install
   sudo yarn run init
   sudo yarn run build
-  sudo yarn run start
+  sudo yarn run start &
   cd /usr/local/src/iot_service
   sudo docker-compose build && sudo docker-compose up -d &
   cd ../
