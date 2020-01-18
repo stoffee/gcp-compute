@@ -40,7 +40,7 @@ resource "google_compute_instance" "default" {
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
   sudo apt update
   apt-cache policy docker-ce
-  sudo apt install -y docker-ce docker-compose mosquitto mosquitto-clients kubectl nodejs npm
+  sudo apt install -y docker-ce docker-compose mosquitto mosquitto-clients kubectl nodejs npm yarn
   npm install -g gulp
   sudo systemctl status docker
   sudo chmod a+w /usr/local/src
