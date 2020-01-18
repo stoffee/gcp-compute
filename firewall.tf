@@ -4,7 +4,7 @@ resource "google_compute_firewall" "allow-inbound" {
 
   allow {
     protocol = "tcp"
-    ports    = ["8080"]
+    ports    = ["8080","3000"]
   }
 
   source_ranges = ["0.0.0.0/0"]
