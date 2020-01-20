@@ -53,10 +53,10 @@ resource "google_compute_instance" "default" {
   cd /usr/local/src/buildly-core
   sudo docker-compose build && sudo docker-compose up -d &
   cd /usr/local/src/buildly-ui-react
-  sudo yarn install
-  sudo yarn run init
-  sudo yarn run build
-  sudo yarn run start &
+  #sudo yarn install
+  #sudo yarn run init
+  #sudo yarn run build
+  #sudo yarn run start &
   cd /usr/local/src/iot_service
   sudo docker-compose build && sudo docker-compose up -d &
   cd ../
