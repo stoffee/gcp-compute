@@ -41,6 +41,7 @@ resource "google_compute_instance" "default" {
   sudo apt update
   apt-cache policy docker-ce
   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+  sudo apt -y remove nodejs npm
   sudo apt install -y docker-ce docker-compose mosquitto mosquitto-clients kubectl nodejs npm yarn
   npm install -g gulp
   sudo systemctl status docker
