@@ -1,1 +1,0 @@
-# buildly-gcp-compute-instance
