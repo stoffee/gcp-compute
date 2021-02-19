@@ -44,7 +44,6 @@ resource "google_compute_instance" "default" {
   machine_type = var.instance_type
   zone         = var.gcp_zone
 
-  tags = ["ttl", "24"]
 
   boot_disk {
     initialize_params {
